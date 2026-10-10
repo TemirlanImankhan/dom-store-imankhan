@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f4f6f2" />
+    <title>Мой магазин — DOM Store</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="src/store-browser.js"></script>
+    <script defer src="src/app.js"></script>
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Мой магазин, на главную"><span class="brand-mark">m</span> market<span class="brand-dot">.</span></a>
+        <div class="topbar-note"><span class="status-dot"></span> Управление каталогом</div>
+      </header>
+
+      <section class="intro">
+        <p class="eyebrow">ЛАБОРАТОРНАЯ РАБОТА 5 <span>·</span> DOM & EVENTS</p>
+        <h1>Мой магазин<span class="heading-dot">.</span></h1>
+        <p class="intro-copy">Добавляйте товары, управляйте остатками и следите за общей стоимостью в одном месте.</p>
+      </section>
+
+      <section class="summary-grid" aria-label="Сводка каталога">
+        <article class="summary-card"><div class="summary-label">ТОВАРОВ В КАТАЛОГЕ <span class="summary-icon">▤</span></div><div class="summary-value" id="product-count">0</div><div class="summary-foot">позиций в списке</div></article>
+        <article class="summary-card total-card"><div class="summary-label">ОБЩАЯ СТОИМОСТЬ <span class="summary-icon">↗</span></div><div class="summary-value" id="store-total">0 ₸</div><div class="summary-foot">с учётом количества</div></article>
+      </section>
+
+      <section class="catalog panel">
+        <div class="section-heading"><div><p class="eyebrow">ВАШ АССОРТИМЕНТ</p><h2>Каталог товаров <span class="count-pill" id="catalog-count">0</span></h2></div><span class="live-label"><span class="status-dot"></span> Обновляется онлайн</span></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>ТОВАР</th><th>ЦЕНА</th><th>КОЛИЧЕСТВО</th><th>СУММА</th><th><span class="visually-hidden">Действия</span></th></tr></thead>
+            <tbody id="product-list" aria-live="polite"></tbody>
+          </table>
+          <div class="empty-state" id="empty-state"><span class="empty-icon">＋</span><strong>Пока здесь пусто</strong><span>Добавьте первый товар с помощью формы ниже.</span></div>
+        </div>
+      </section>
+
+      <section class="add-section panel">
+        <div class="section-heading add-heading"><div><p class="eyebrow">НОВАЯ ПОЗИЦИЯ</p><h2>Добавить товар</h2></div><span class="add-badge">＋</span></div>
+        <form id="product-form" novalidate>
+          <div class="form-grid">
+            <label class="field"><span>Название товара</span><input id="name" name="name" type="text" placeholder="Например, Кофе в зернах" autocomplete="off" aria-describedby="name-error" /><small class="field-error" id="name-error"></small></label>
+            <label class="field"><span>Цена <i>₸</i></span><input id="price" name="price" type="number" min="0.01" step="0.01" placeholder="0" inputmode="decimal" aria-describedby="price-error" /><small class="field-error" id="price-error"></small></label>
+            <label class="field"><span>Количество</span><input id="qty" name="qty" type="number" step="1" placeholder="0" inputmode="numeric" aria-describedby="qty-error" /><small class="field-error" id="qty-error"></small></label>
+            <button class="submit-button" type="submit"><span>＋</span> Добавить товар</button>
+          </div>
+        </form>
+        <p class="form-hint"><span>✳</span> Все поля обязательны. Цена должна быть больше нуля.</p>
+      </section>
+      <footer><span>© 2026 MY MARKET</span><span>Сделано с чистым JavaScript <span class="footer-heart">♥</span></span></footer>
+    </main>
+  </body>
+</html>
